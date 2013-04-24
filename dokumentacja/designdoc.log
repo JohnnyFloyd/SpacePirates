@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2013.4.21)  22 APR 2013 16:13
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2013.4.21)  24 APR 2013 22:30
 entering extended mode
 **designdoc.tex
 
@@ -400,6 +400,20 @@ Underfull \hbox (badness 1496) in paragraph at lines 14--14
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (83.84189pt too wide) in paragraph at lines 69--80
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 )
 ("E:\Magazyn\PP\Semestr VIII\Programowanie Gier\projekt\dokumentacja\swiat_gry.
 tex" [3
@@ -419,7 +433,7 @@ aux") )
 Here is how much of TeX's memory you used:
  1581 strings out of 495238
  19270 string characters out of 3178946
- 68865 words of memory out of 3000000
+ 74865 words of memory out of 3000000
  4790 multiletter control sequences out of 15000+200000
  14787 words of font info for 41 fonts, out of 3000000 for 9000
  34 hyphenation exceptions out of 8191
@@ -430,7 +444,7 @@ am Files (x86)/MiKTeX 2.8/fonts/type1/public/pl/plbx10.pfb><C:/Program Files (x
 2.8/fonts/type1/public/pl/plr10.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/ty
 pe1/public/pl/plr12.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/p
 l/plr17.pfb>
-Output written on designdoc.pdf (6 pages, 59954 bytes).
+Output written on designdoc.pdf (6 pages, 62213 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
