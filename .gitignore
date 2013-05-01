@@ -2,3 +2,12 @@
 ###################
 *.log
 *.aux
+
+gra/Library
+gra/Temp
+gra/Assembly-CSharp-vs.csproj
+gra/Assembly-CSharp.csproj
+gra/Assembly-CSharp.pidb
+gra/gra-csharp.sln
+gra/gra.sln
+gra/gra.userprefs

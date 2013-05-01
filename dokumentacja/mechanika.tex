@@ -1,29 +1,57 @@
 \chapter{Mechanika}
 
+\section{Pojęcia}
+
+Zasoby
+\begin{itemize}
+\item{ Punkty doświadczenia(PD) - miara mocy i umiejętności gracza, przyznawana za wykonywanie zadań i pokonanych przeciwników}
+\item{Wytrzymałość - oznacza jak bardzo odporny na obrażenia jest dany statek(przeciwnik bądź gracz)}
+\item{Punkty rozwoju(PR) - waluta otrzymywana za awansowanie na kolejne poziomy doświadczenia, służąca do kupna ulepszeń statku}
+\end{itemize}
+
+Statek - jednostka w grze, zarówno gracz, przeciwnik jak i postać niezależna. Postacie niezależne nie posiadają w ogóle statystyk, za wyjątkiem przypadków kiedy jest to wytrzymałość.
+
+Atrybuty statków
+\begin{itemize}
+\item{ Szybkość - prędkość poruszania się statku }
+\item{Atak - ilość obrażeń, które zadaje pojedynczy strzał}
+\item{Czas przeładowania - minimalny czas pomiędzy kolejnymi strzałami w sekundach}
+\item{Skala wyzwania(SW) - miara trudności przeciwnika, zadania. Za każdego pokonanego wroga gracz otrzymuje punkty doświadczenia w zależności od poziomu gracza i SW właśnie}
+\end{itemize}
+
+Atrybuty gracza
+\begin{itemize}
+\item{ Poziom - doświadczenie gracza, które przekroczyło odpowiedni próg }
+\item{Regeneracja - ile \% maksymalnej wytrzymałości statku jest odnawianych co sekundę}
+\end{itemize}
+
+
 \section{Gracz}
 Statek bohatera porusza się cały czas do przodu. Możliwy jest ruch tylko w osi poziomej i pionowej.
 Poniżej znajdują się podstawowe charakterystyki gracza, które są ustalane na początku rozgrywki. Awansując na kolejne poziomy, może poprawić te statystyki.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{ | c | c | p{6cm} | }
+\begin{tabular}{ | c | c | }
 \hline
-\textbf{Nazwa} & \textbf{Wartość} & \textbf{Opis} \\ \hline
-Pancerz gracza & 30 & Wytrzymałość statku gracza \\ \hline
-Siła ataku & 5 & Ilość obrażeń zadawanych każdym trafieniem przeciwnikowi\\ \hline
-Czas ładowania & 1 sekunda & Minimalny odstęp między kolejnymi wystrzałami\\ \hline
+\textbf{Nazwa} & \textbf{Wartość} \\ \hline
+Wytrzymałość & 30 \\ \hline
+Atak & 5 \\ \hline
+Czas ładowania & 1 sekunda \\ \hline
+Regeneracja & 0\% \\ \hline
+Poziom & 1 \\ \hline
 \end{tabular}
-\caption{Początkowe statystyki gracza}
+\caption{Początkowe statystyki}
 \end{table}
 
-\section{Zdobywanie doświadczenia}
-Doświadczenie można zdobyć przez niszczenie wrogich statków oraz wykonywanie zadań. Gdy gracz zdobędzie odpowiednio dużo doświadczenia może wtedy awansować na kolejny poziom. Otrzymuje wtedy pewną liczbę punktów rozwoju(od tego momentu nazywane PK), które może wydać na usprawnienia.
+\subsection{Zdobywanie doświadczenia}
+Doświadczenie można zdobyć przez niszczenie wrogich statków oraz wykonywanie zadań. Gdy gracz zdobędzie odpowiednio dużo doświadczenia może wtedy awansować na kolejny poziom. Otrzymuje wtedy pewną liczbę punktów rozwoju, które może wydać na usprawnienia.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{ | c | c | c | }
 \hline
-\textbf{Poziom} & \textbf{PD do awansu} & \textbf{PK} \\
+\textbf{Poziom} & \textbf{PD do awansu} & \textbf{PR} \\
 \hline
 1 & 1000 & 3 \\
 2 & 3000 & 3 \\
@@ -44,24 +72,48 @@ Doświadczenie można zdobyć przez niszczenie wrogich statków oraz wykonywanie
 \caption{Liczba wymaganych PD do awansowania na każdym poziomie}
 \end{table}
 
+Wzór na liczbę punktów doświadczenia dla gracza o poziomie P i wyzwaniu o trudności równej SW.
+\begin{equation}
+\left \lfloor P*150*1.4^{SW-P} \right \rfloor
+\end{equation}
+
+\section{Przeciwnicy}
+Przeciwnicy poruszają się w kierunku gracza i cały czas strzelają w jego stronę. Ich strzały uszkadzają wyłącznie statek gracza, a w momencie przypadkowego zetknięcia wrogiego statku z wrogimi pociskami, nic się nie dzieje. Przeciwnicy unikają statku gracza, ale jeśli nastąpi kolizja to oba są niszczone. Unikają również kolizji między własnymi statkami.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ | c | c | c | c | c | c | }
+\hline
+\textbf{Nazwa} & \textbf{Wytrzymałość} & \textbf{Atak} & \textbf{Szybkość} & \textbf{Czas przeładowania} & \textbf{SW} \\ \hline
+Myśliwiec 	& 25 	& 3 	& 1 	& 0.7	& 1		\\ \hline
+Patrolowiec & 45 	& 5 	& 1 	& 0.7 	& 2 	\\ \hline
+Korweta 	& 70 	& 10 	& 1 	& 1 	& 4 	\\ \hline
+Fregata 	& 150 	& 20 	& 1 	& 1		& 6		\\ \hline
+Niszczyciel & 300 	& 35 	& 0.7 	& 1		& 9 	\\ \hline
+Krążownik 	& 500 	& 50 	& 0.5 	& 1.2	& 13	\\ \hline
+Pancernik 	& 1000 	& 80 	& 0.4 	& 1.5	& 17	\\ \hline
+\end{tabular}
+\caption{Statystyki wrogich statków}
+\end{table}
+
 \section{Usprawnienia}
 Poniżej znajdują się tabele z usprawnieniami dla broni, pancerza i silników opisujące koszt danego usprawnienia, jego wpływ na postać i jakie usprawnienia należy wcześniej wykupić by mieć dostęp do niego.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{ | c | c | c | }
+\begin{tabular}{ | c | c | c | c | }
 \hline
-\textbf{Nazwa} & \textbf{Koszt w PR} & \textbf{Działanie} \\
+\textbf{Nazwa} & \textbf{Koszt w PR} & \textbf{Działanie} & \textbf{Wymagania}  \\
 \hline
-Miotacz Laserowy I & 3 & Siła ataku wynosi 7 \\ \hline
-Miotacz Laserowy II & 5 & Siła ataku wynosi 10 \\ \hline
-Pociski Jonowe I & 10 & Siła ataku wynosi 15 \\ \hline
-Pociski Jonowe II & 15 & Siła ataku wynosi 25 \\ \hline
-Akcelerator cząstek & 15 & Zmniejsza czas ładowania do 0.8 s \\ \hline
-Pierścienie Plancka & 20 & Zmniejsza czas ładowania do 0.5 s \\ \hline
-Działo Higgsa & 30 & Siła ataku wynosi 40 \\ \hline
+Miotacz Laserowy I & 3 & Siła ataku wynosi 7 & \\ \hline
+Miotacz Laserowy II & 5 & Siła ataku wynosi 10 & Miotacz Laserowy I \\ \hline
+Pociski Jonowe I & 10 & Siła ataku wynosi 15 & \\ \hline
+Pociski Jonowe II & 15 & Siła ataku wynosi 25 & Pociski Jonowe I \\ \hline
+Akcelerator cząstek & 15 & Zmniejsza czas ładowania do 0.8 s & \\ \hline
+Pierścienie Plancka & 20 & Zmniejsza czas ładowania do 0.5 s & \\ \hline
+Działo Higgsa & 30 & Siła ataku wynosi 40 & \\ \hline
 \end{tabular}
-\caption{Tablica usprawnien dla broni}
+\caption{Tablica usprawnień dla broni}
 \end{table}
 
 \begin{table}[h]
@@ -73,11 +125,11 @@ Działo Higgsa & 30 & Siła ataku wynosi 40 \\ \hline
 Kompozyty & 5 & Pancerz wynosi 45 \\ \hline
 Mikrowłókna & 10 & Pancerz  wynosi 70 \\ \hline
 Nanowłókna & 15 & Pancerz wynosi 120 \\ \hline
-Reperator & 20 & Pancerz odbudowuje się z prędkoscia 1.5\% sekundę \\ \hline
+Reperator & 20 & Pancerz odbudowuje się z prędkością 1.5\% sekundę \\ \hline
 Lekki pancerz tytanowy & 20 & Pancerz wynosi 180 \\ \hline
 Ciężki pancerz tytanowy & 30 & Pancerz wynosi 300 \\ \hline
 \end{tabular}
-\caption{Tablica usprawnien dla pancerza}
+\caption{Tablica usprawnień dla pancerza}
 \end{table}
 
 \begin{table}[h]
@@ -89,5 +141,5 @@ Ciężki pancerz tytanowy & 30 & Pancerz wynosi 300 \\ \hline
 Napęd Fuzyjny & 15 & Prędkość rośnie o 25\% \\ \hline
 Hipernapęd & 30 & Prędkość rośnie o 60\% \\ \hline
 \end{tabular}
-\caption{Tablica usprawnien dla silników}
+\caption{Tablica usprawnień dla silników}
 \end{table}

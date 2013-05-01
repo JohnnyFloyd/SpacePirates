@@ -1,4 +1,4 @@
 SpacePirates
 ============
 
-Wszelkie statystyki w dokumentacji sa jak narazie umowne i na pewno beda zmieniane w procesie dopracowywania.
+Wszelkie statystyki w dokumentacji s¹ jak narazie umowne i na pewno bêd¹ zmieniane w procesie dopracowywania.
