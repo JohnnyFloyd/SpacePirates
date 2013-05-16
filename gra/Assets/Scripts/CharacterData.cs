@@ -11,6 +11,9 @@ public class CharacterData : MonoBehaviour {
 	private float regeneration;
 	private float reload;
 	
+	private static int[] expThreshold;
+	private static int MAX_LEVEL = 13;
+	
 	// Use this for initialization
 	void Start () {
 		level = 1;
@@ -20,12 +23,19 @@ public class CharacterData : MonoBehaviour {
 		progressPoints = 0;
 		regeneration = 0;
 		reload = 1;
+		
+		expThreshold = new int[MAX_LEVEL + 1];
+		expThreshold[1] = 1000;
+		for (int i = 2; i < MAX_LEVEL + 1; i++) {
+			expThreshold[i] = expThreshold[i-1] + (i-1)*2000;
+		}
 	}
 	
 	void AddExperiencePoints(int points)
 	{
 		experiencePoints += points;
-		if (expriencePoint > 1000) { //Threshold
+		if (experiencePoints > expThreshold[level]) 
+		{
 			level++;
 			addProgressPoints();
 		}

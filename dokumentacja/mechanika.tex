@@ -5,7 +5,7 @@
 Zasoby
 \begin{itemize}
 \item{ Punkty doświadczenia(PD) - miara mocy i umiejętności gracza, przyznawana za wykonywanie zadań i pokonanych przeciwników}
-\item{Wytrzymałość - oznacza jak bardzo odporny na obrażenia jest dany statek(przeciwnik bądź gracz)}
+\item{Wytrzymałość - oznacza jak bardzo odporny na obrażenia jest dany statek(przeciwnik bądź gracz). Gdy stanie się mniejsze lub równe 0, statek eksploduje i znika. Nazywana jest też pancerzem.}
 \item{Punkty rozwoju(PR) - waluta otrzymywana za awansowanie na kolejne poziomy doświadczenia, służąca do kupna ulepszeń statku}
 \end{itemize}
 
@@ -28,7 +28,7 @@ Atrybuty gracza
 
 \section{Gracz}
 Statek bohatera porusza się cały czas do przodu. Możliwy jest ruch tylko w osi poziomej i pionowej.
-Poniżej znajdują się podstawowe charakterystyki gracza, które są ustalane na początku rozgrywki. Awansując na kolejne poziomy, może poprawić te statystyki.
+Poniżej znajdują się podstawowe charakterystyki gracza, które są ustalane na początku rozgrywki. Awansując na kolejne poziomy, może poprawić te statystyki. Gdy życie gracza spadnie do 0 lub mniej, gracz kończy grę.
 
 \begin{table}[h]
 \centering
@@ -62,20 +62,26 @@ Doświadczenie można zdobyć przez niszczenie wrogich statków oraz wykonywanie
 7 & 43000 & 7 \\
 8 & 57000 & 9 \\
 9 & 73000 & 9 \\
-10 & 91000 & 10 \\
-11 & 111000 & 12 \\
-12 & 133000 & 12 \\
-13 & 157000 & 15 \\
+10 & 91000 & 11 \\
+11 & 111000 & 11 \\
+12 & 133000 & 13 \\
+13 & 157000 & 13 \\
 \hline
 
 \end{tabular}
 \caption{Liczba wymaganych PD do awansowania na każdym poziomie}
 \end{table}
 
-Wzór na liczbę punktów doświadczenia dla gracza o poziomie P i wyzwaniu o trudności równej SW.
-\begin{equation}
+Wzór na to ile punktów doświadczenia gracz o poziome P by przejść na kolejny poziom:
+\begin{align*}
+EXP(1) = 1000 \\
+EXP(P) = EXP(P-1) + (P-1)*2000 
+\end{align*}
+
+Wzór na liczbę punktów doświadczenia dla gracza o poziomie P i wyzwaniu o trudności równej SW:
+\begin{align*}
 \left \lfloor P*150*1.4^{SW-P} \right \rfloor
-\end{equation}
+\end{align*}
 
 \section{Przeciwnicy}
 Przeciwnicy poruszają się w kierunku gracza i cały czas strzelają w jego stronę. Ich strzały uszkadzają wyłącznie statek gracza, a w momencie przypadkowego zetknięcia wrogiego statku z wrogimi pociskami, nic się nie dzieje. Przeciwnicy unikają statku gracza, ale jeśli nastąpi kolizja to oba są niszczone. Unikają również kolizji między własnymi statkami.
@@ -97,7 +103,7 @@ Pancernik 	& 1000 	& 80 	& 0.4 	& 1.5	& 17	\\ \hline
 \end{table}
 
 \section{Usprawnienia}
-Poniżej znajdują się tabele z usprawnieniami dla broni, pancerza i silników opisujące koszt danego usprawnienia, jego wpływ na postać i jakie usprawnienia należy wcześniej wykupić by mieć dostęp do niego.
+Poniżej znajdują się tabele z usprawnieniami dla broni, pancerza i silników opisujące koszt danego usprawnienia, jego wpływ na postać i jakie usprawnienia należy wcześniej wykupić by mieć dostęp do niego. Można je nabywać wyłącznie w punktach kontrolnych między obszarami.
 
 \begin{table}[h]
 \centering
@@ -122,12 +128,12 @@ Działo Higgsa & 30 & Siła ataku wynosi 40 & \\ \hline
 \hline
 \textbf{Nazwa} & \textbf{Koszt w PR} & \textbf{Opis} \\
 \hline
-Kompozyty & 5 & Pancerz wynosi 45 \\ \hline
-Mikrowłókna & 10 & Pancerz  wynosi 70 \\ \hline
-Nanowłókna & 15 & Pancerz wynosi 120 \\ \hline
-Reperator & 20 & Pancerz odbudowuje się z prędkością 1.5\% sekundę \\ \hline
-Lekki pancerz tytanowy & 20 & Pancerz wynosi 180 \\ \hline
-Ciężki pancerz tytanowy & 30 & Pancerz wynosi 300 \\ \hline
+Kompozyty & 5 & Wytrzymałość wynosi 45 \\ \hline
+Mikrowłókna & 10 & Wytrzymałość wynosi 70 \\ \hline
+Nanowłókna & 15 & Wytrzymałość wynosi 120 \\ \hline
+Reperator & 20 & Wytrzymałość odbudowuje się z prędkością 1.5\% sekundę \\ \hline
+Lekki pancerz tytanowy & 20 & Wytrzymałość wynosi 180 \\ \hline
+Ciężki pancerz tytanowy & 30 & Wytrzymałość wynosi 300 \\ \hline
 \end{tabular}
 \caption{Tablica usprawnień dla pancerza}
 \end{table}
